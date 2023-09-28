@@ -3,7 +3,7 @@
 使用rust编写的Windows系统实用C接口，只依赖std和windows-rs；主要目的是方便自己学习rust练手，积累一些通用代码。
 
 
-## 如何实用
+## 如何使用
 
 使用cargo build编译， 在target目录拿到lib和dll， 在C/C++或其它语言代码中调用
 
