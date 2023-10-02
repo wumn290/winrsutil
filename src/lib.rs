@@ -3,17 +3,23 @@ mod registry;
 mod sign;
 mod version;
 mod wmi;
+mod process;
+mod error;
+mod defer;
 
-use icon::*;
-use registry::*;
-use sign::*;
-use std::ffi::CStr;
-use std::os::raw::c_char;
-use version::*;
+pub(crate) use defer::*;
+pub(crate) use error::*;
+pub(crate) use process::*;
+pub(crate) use icon::*;
+pub(crate) use registry::*;
+pub(crate) use sign::*;
+pub(crate) use std::ffi::CStr;
+pub(crate) use std::os::raw::c_char;
+pub(crate) use version::*;
 use windows::{
     core::*, Win32::Foundation::*, Win32::System::LibraryLoader::*, Win32::System::Registry::*,
 };
-use wmi::*;
+pub(crate) use wmi::*;
 
 #[no_mangle]
 pub extern "C" fn SaveExeIcon(file_name: *const c_char, icon_path: *const c_char) -> u32 {

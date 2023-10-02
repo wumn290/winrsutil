@@ -1,8 +1,8 @@
-use common::*;
+use super::*;
 use std::ffi::c_void;
 use windows::{core::*, Win32::Foundation::*, Win32::Storage::FileSystem::*};
 
-pub fn get_file_version_info(
+pub(crate) fn get_file_version_info(
     value_name: PCWSTR,
     module_name: PCWSTR,
 ) -> StdResult<String, Box<dyn StdError>> {

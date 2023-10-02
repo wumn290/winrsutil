@@ -1,11 +1,11 @@
-use common::*;
+use super::*;
 use std::collections::*;
 use windows::{
     core::*, Win32::Foundation::*, Win32::System::Com::*, Win32::System::Ole::*,
     Win32::System::Variant::*, Win32::System::Wmi::*,
 };
 
-pub fn exec_wmi(
+pub(crate) fn exec_wmi(
     class_name: &str,
     condition: &str,
     namespace: &str,

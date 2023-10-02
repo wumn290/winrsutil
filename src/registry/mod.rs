@@ -1,8 +1,8 @@
-use common::*;
+use super::*;
 use std::mem::size_of;
 use windows::{core::*, Win32::System::Registry::*};
 
-pub fn set_registry_value(
+pub(crate) fn set_registry_value(
     key: HKEY,
     sub_key: PCWSTR,
     value_name: PCWSTR,
@@ -47,7 +47,7 @@ pub fn set_registry_value(
     }
 }
 
-pub fn query_registry_value(
+pub(crate) fn query_registry_value(
     key: HKEY,
     sub_key: PCWSTR,
     value_name: PCWSTR,
@@ -87,7 +87,7 @@ pub fn query_registry_value(
     }
 }
 
-pub fn delete_registry_value(
+pub(crate) fn delete_registry_value(
     key: HKEY,
     sub_key: PCWSTR,
     value_name: PCWSTR,

@@ -6,7 +6,7 @@ use windows::{
     Win32::UI::WindowsAndMessaging::*,
 };
 
-use common::*;
+use super::*;
 
 #[derive(Default)]
 #[repr(C, packed)]
@@ -16,7 +16,7 @@ struct ICONHEADER(u16, u16, u16);
 #[repr(C, packed)]
 struct ICONDIR(u8, u8, u8, u8, u16, u16, u32, u32);
 
-pub fn save_exe_icon(file_name: PCWSTR, icon_path: PCWSTR) -> StdResult<(), Box<dyn StdError>> {
+pub(crate) fn save_exe_icon(file_name: PCWSTR, icon_path: PCWSTR) -> StdResult<(), Box<dyn StdError>> {
     if file_name.is_null() || icon_path.is_null() {
         return Err(WRUE::new(1, "Icon".into(), "file_name or icon_path is invalid".into()).into());
     }
@@ -271,7 +271,7 @@ mod tests {
     fn test_icon() {
         let ret = save_exe_icon(
             w!("C:\\Windows\\System32\\cmd.exe"),
-            w!("C:\\Users\\Admin\\AppData\\Local\\Temp\\winrsutil_rust_test184341.ico"),
+            w!("C:\\Users\\86187\\AppData\\Local\\Temp\\winrsutil_rust_test184341.ico"),
         );
         dbg!(&ret);
         assert_eq!(ret.is_ok(), true);

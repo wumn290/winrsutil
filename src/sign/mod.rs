@@ -1,11 +1,11 @@
-use common::*;
+use super::*;
 use std::ffi::c_void;
 use std::mem::size_of;
 use windows::{
     core::*, Win32::Foundation::*, Win32::Security::Cryptography::*, Win32::Security::WinTrust::*,
 };
 
-pub fn get_file_signer_name(file_path: PCWSTR) -> StdResult<String, Box<dyn StdError>> {
+pub(crate) fn get_file_signer_name(file_path: PCWSTR) -> StdResult<String, Box<dyn StdError>> {
     if file_path.is_null() {
         return Err(WRUE::new(1, "Sign".into(), "file_path is null".into()).into());
     }
